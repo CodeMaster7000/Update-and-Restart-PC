@@ -1,4 +1,4 @@
-# Update and Restart Computer
+# Install security updates and restart PC
 
 A PowerShell script designed to check for security updates, install them, and restart the computer afterward. 
 
