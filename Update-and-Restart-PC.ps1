@@ -6,7 +6,7 @@ $Searcher.IncludePotentiallySupersededUpdates = $false
 $Searcher.Criteria = 'IsInstalled=0 and IsHidden=0 and Type="Software" and CategoryIDs contains "SecurityUpdates"'
 $SearchResult = $Searcher.Search()
 if ($SearchResult.Updates.Count -gt 0) {
-    Write-Host "Available Security Updates:"
+    Write-Host "Available security updates:"
     $UpdatesToInstall = New-Object -ComObject Microsoft.Update.UpdateColl
     foreach ($Update in $SearchResult.Updates) {
         $UpdatesToInstall.Add($Update)
@@ -20,11 +20,11 @@ if ($SearchResult.Updates.Count -gt 0) {
     $Installer.Updates = $UpdatesToInstall
     $InstallationResult = $Installer.Install()
     if ($InstallationResult.ResultCode -eq 2) {
-        Write-Host "All security updates have been installed."
-        Write-Host "Restarting the computer..."
+        Write-Host "Security updates successfully installed!"
+        Write-Host "Restarting your PC..."
         Restart-Computer -Force
     } else {
-        Write-Host "Failed to install updates. Check for errors and try again."
+        Write-Host "Failed to install updates. Check for sources of errors and try again."
     }
 }
 else {
